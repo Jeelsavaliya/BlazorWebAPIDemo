@@ -1,0 +1,34 @@
+﻿@page "/add-student"
+<h3>AddStudent</h3>
+
+<EditForm Model="@student" OnValidSubmit="Save">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <InputText id="firstName" class="form-control" @bind-Value="student.FirstName" />
+        <ValidationMessage For="@(() => student.FirstName)" />
+    </div>
+
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <InputText id="lastName" class="form-control" @bind-Value="student.LastName" />
+        <ValidationMessage For="@(() => student.LastName)" />
+    </div>
+     <div class="form-group">
+        <label for="lastName">Mobile Number</label>
+        <InputText id="lastName" class="form-control" @bind-Value="student.MobileNumber" />
+        <ValidationMessage For="@(() => student.MobileNumber)" />
+    </div>
+
+    <div class="form-group">
+        <label for="std">Standard</label>
+        <InputNumber id="std" class="form-control" @bind-Value="student.Semester" />
+        <ValidationMessage For="@(() => student.Semester)" />
+    </div> 
+
+    <br />
+    <button type="submit" class="btn btn-success">Add Student</button>
+    <button type="submit" class="btn btn-primary" @onclick="BackToHome">Back To Home</button>
+</EditForm>

@@ -1,41 +1,46 @@
 ﻿@page "/student-list"
 <h3>StudentList</h3>
 
-@* <button class="btn btn-primary" @onclick="AddStd">Add Student</button> *@
+<button class="btn btn-primary" @onclick="AddStd">Add Student</button>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>MobileNumber</th>
-            <th>Semester</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        @* <tr>
-            <td>1</td>
-            <td>Jeel</td>
-            <td>Savaliya</td>
-            <td>1234567890</td>
-            <td>8</td>
-        </tr> *@
-        @foreach (var std in students)
-        {
+@if (students == null)
+{
+    <h1>Loading...</h1>
+}
+else
+{
+    <table class="table">
+        <thead>
             <tr>
-                <td>@std.Id</td>
-                <td>@std.FirstName</td>
-                <td>@std.LastName</td>
-                <td>@std.MobileNumber</td>
-                <td>@std.Semester</td>
-                <td>
-                    <button class="btn btn-primary" >Update</button>
-
-                    <button class="btn btn-danger"  data-toggle="modal" data-target="#exampleModal">Delete</button>
-                </td>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>MobileNumber</th>
+                <th>Semester</th>
+                <th>Action</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var std in students)
+            {
+                <tr>
+                    <td>@std.Id</td>
+                    <td>@std.FirstName</td>
+                    <td>@std.LastName</td>
+                    <td>@std.MobileNumber</td>
+                    <td>@std.Semester</td>
+                    <td>
+                        <button class="btn btn-primary" @onclick="() => UpdateStudent(std.Id)">Update</button>
+
+                        <button class="btn btn-danger" @onclick="() => Delete(std.Id)" data-toggle="modal" data-target="#exampleModal">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@* @if (StateConferm)
+{
+ <DeleteStudent student="@student"></DeleteStudent>   
+} *@
