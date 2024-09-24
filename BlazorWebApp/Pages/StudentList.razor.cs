@@ -31,13 +31,11 @@ namespace BlazorWebApp.Pages
             await http.DeleteAsync("https://localhost:7041/api/Students/" + Id);
             StateHasChanged();
             navigationManager.NavigateTo("/student-list", true);
-
         }
 
         public async void UpdateStudent(int Id)
         {
             navigationManager.NavigateTo($"/edit-student/{Id}", true);
-
         }
     }
 
